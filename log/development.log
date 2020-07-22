@@ -1,0 +1,2089 @@
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20200720122726)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200720122726"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-20 12:28:22.473485"], ["updated_at", "2020-07-20 12:28:22.473485"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateConverstions (20200720122913)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "converstions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sender_id" integer, "recipient_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200720122913"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMessages (20200720122930)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "conversation_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_conversation_id" ON "messages" ("conversation_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200720122930"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-07-20 20:14:16 +0530
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant ConverstionController
+Did you mean?  ConverstionsController):
+  
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:92:in `rescue in controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-07-20 20:17:01 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ConverstionsController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms | Allocations: 1410)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-20 20:17:01 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 594)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 11.1ms | Allocations: 3162)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/sourabhkumar.sahu/connect/public/packs
+[Webpacker] Hash: 15d1bb7b54cf6326b9ba
+Version: webpack 4.43.0
+Time: 1173ms
+Built at: 07/20/2020 8:17:04 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-9afcbb5693aa87623e69.js    124 KiB  application  [emitted] [immutable]  application
+js/application-9afcbb5693aa87623e69.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-9afcbb5693aa87623e69.js js/application-9afcbb5693aa87623e69.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 2817ms (Views: 2807.7ms | ActiveRecord: 0.6ms | Allocations: 33665)
+
+
+Started GET "/" for ::1 at 2020-07-20 20:18:13 +0530
+Processing by ConverstionsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 180)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-20 20:18:13 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1043)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 5236)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-07-20 20:18:17 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 198)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1795)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 6634)
+
+
+Started POST "/users" for ::1 at 2020-07-20 20:18:43 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"onbgMsgMVedoBibV9tiyydKSEeYBhsquP0357W0tgRBytsOxDBsodhARGAeA9HP7sEANNQo41uI+ppwT5JdE3Q==", "user"=>{"email"=>"some@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "some@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "some@email.com"], ["encrypted_password", "$2a$12$SvTrMs9o53nUWvAjiqA5peaJDf5FW4NOFqTegbtBVmn2VD3bveEP."], ["created_at", "2020-07-20 14:48:44.304230"], ["updated_at", "2020-07-20 14:48:44.304230"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 1251ms (ActiveRecord: 1.8ms | Allocations: 9834)
+
+
+Started GET "/" for ::1 at 2020-07-20 20:18:44 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms | Allocations: 2707)
+
+
+  
+SyntaxError (/Users/sourabhkumar.sahu/connect/app/models/converstion.rb:10: syntax error, unexpected ',', expecting ')'
+...verstions.recipient_id = ? ) ", sender_id, recipient_id, rec...
+...                              ^
+/Users/sourabhkumar.sahu/connect/app/models/converstion.rb:10: syntax error, unexpected ')', expecting '='
+...nt_id, recipient_id, sender_id)
+...                              ^
+):
+  
+app/models/converstion.rb:10: syntax error, unexpected ',', expecting ')'
+app/models/converstion.rb:10: syntax error, unexpected ')', expecting '='
+app/models/converstion.rb:10: syntax error, unexpected ',', expecting ')'
+app/models/converstion.rb:10: syntax error, unexpected ')', expecting '='
+app/models/converstion.rb:10: syntax error, unexpected ',', expecting ')'
+app/models/converstion.rb:10: syntax error, unexpected ')', expecting '='
+app/controllers/converstions_controller.rb:8:in `index'
+Started GET "/" for ::1 at 2020-07-20 20:20:55 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.6ms | Allocations: 7844)
+
+
+  
+SyntaxError (/Users/sourabhkumar.sahu/connect/app/models/converstion.rb:10: syntax error, unexpected local variable or method, expecting `end'
+...recipient_id = ? ) ") sender_id, recipient_id, recipient_id,...
+...                      ^~~~~~~~~
+/Users/sourabhkumar.sahu/connect/app/models/converstion.rb:10: syntax error, unexpected '\n', expecting '='):
+  
+app/models/converstion.rb:10: syntax error, unexpected local variable or method, expecting `end'
+app/models/converstion.rb:10: syntax error, unexpected '\n', expecting '='
+app/models/converstion.rb:10: syntax error, unexpected local variable or method, expecting `end'
+app/models/converstion.rb:10: syntax error, unexpected '\n', expecting '='
+app/models/converstion.rb:10: syntax error, unexpected local variable or method, expecting `end'
+app/models/converstion.rb:10: syntax error, unexpected '\n', expecting '='
+app/controllers/converstions_controller.rb:8:in `index'
+Started GET "/" for ::1 at 2020-07-20 20:25:26 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.7ms | Allocations: 9193)
+
+
+  
+NameError (uninitialized constant ConverstionsController::Converstion):
+  
+app/controllers/converstions_controller.rb:8:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-07-20 21:06:55 +0530
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2420)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 45ms (Views: 19.7ms | ActiveRecord: 1.0ms | Allocations: 22336)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-20 21:07:10 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 601)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 8.3ms | Allocations: 4583)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 15.3ms | ActiveRecord: 0.0ms | Allocations: 10052)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-07-20 21:07:13 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 199)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1795)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.0ms | Allocations: 6628)
+
+
+Started POST "/users" for ::1 at 2020-07-20 21:08:03 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"GjZ5W991770OyJhGPEg9Bj28U0lDhUHn2yALu0oDMYtEhJPQsV7iBLZaNowOgdkXC8/2q1x5Z79CMFXI9dGGyg==", "user"=>{"email"=>"any@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "any@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "any@email.com"], ["encrypted_password", "$2a$12$K2HHeTVCPMS2VvXq15m5IuHixp1puW3Hld1vsSFAXTWbH5EkCN/Wy"], ["created_at", "2020-07-20 15:38:03.381792"], ["updated_at", "2020-07-20 15:38:03.381792"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 218ms (ActiveRecord: 1.6ms | Allocations: 9297)
+
+
+Started GET "/" for ::1 at 2020-07-20 21:08:03 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1332)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 6.4ms | ActiveRecord: 0.3ms | Allocations: 6700)
+
+
+Started GET "/" for ::1 at 2020-07-20 21:08:09 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1317)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.3ms | Allocations: 6659)
+
+
+Started POST "/converstions?recipient_id=1&sender_id=2" for ::1 at 2020-07-20 21:08:14 +0530
+Processing by ConverstionsController#create as HTML
+  Parameters: {"authenticity_token"=>"wMa7ZpwRKZh8IqVyeuVLaLzg3eYhOCaeZ830FsgaqkiJDDOO1Rb4E0rtVQjQYAbMvZkZrGU29Um2Dy+zJjvE+w==", "recipient_id"=>"1", "sender_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '2' AND converstions.recipient_id = '1' )
+			OR (converstions.sender_id = '1' AND converstions.recipient_id = '2' ) )[0m
+  ↳ app/controllers/converstions_controller.rb:13:in `create'
+[31mUnpermitted parameters: :_method, :authenticity_token[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mConverstion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "converstions" WHERE "converstions"."sender_id" = ? AND "converstions"."recipient_id" = ? LIMIT ?[0m  [["sender_id", 2], ["recipient_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mConverstion Create (0.3ms)[0m  [1m[32mINSERT INTO "converstions" ("sender_id", "recipient_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sender_id", 2], ["recipient_id", 1], ["created_at", "2020-07-20 15:38:14.339313"], ["updated_at", "2020-07-20 15:38:14.339313"]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 28ms (ActiveRecord: 1.9ms | Allocations: 13983)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 21:08:14 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.2ms | Allocations: 7222)
+
+
+  
+NoMethodError (undefined method `messages' for nil:NilClass):
+  
+app/controllers/messages_controller.rb:9:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 21:11:55 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.8ms | Allocations: 12559)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'converstion_id' for Message.):
+  
+app/controllers/messages_controller.rb:9:in `index'
+Started POST "/converstions?recipient_id=1&sender_id=2" for ::1 at 2020-07-20 21:12:04 +0530
+Processing by ConverstionsController#create as HTML
+  Parameters: {"authenticity_token"=>"wMa7ZpwRKZh8IqVyeuVLaLzg3eYhOCaeZ830FsgaqkiJDDOO1Rb4E0rtVQjQYAbMvZkZrGU29Um2Dy+zJjvE+w==", "recipient_id"=>"1", "sender_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '2' AND converstions.recipient_id = '1' )
+			OR (converstions.sender_id = '1' AND converstions.recipient_id = '2' ) )[0m
+  ↳ app/controllers/converstions_controller.rb:13:in `create'
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '2' AND converstions.recipient_id = '1' )
+			OR (converstions.sender_id = '1' AND converstions.recipient_id = '2' ) ) ORDER BY "converstions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:14:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 18ms (ActiveRecord: 0.9ms | Allocations: 8718)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 21:12:04 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 1389)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'converstion_id' for Message.):
+  
+app/controllers/messages_controller.rb:9:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-07-20 21:37:00 +0530
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  Rendered converstions/index.html.erb within layouts/application (Duration: 12.5ms | Allocations: 7468)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 1.3ms | Allocations: 19067)
+
+
+  
+ActionView::Template::Error (undefined method `seder_id' for #<Converstion:0x00007f9369ba84f8>
+Did you mean?  sender_id
+               sender_id=
+               sender_id?):
+    11: 
+    12:   <tbody>
+    13:     <% @converstions.each do |converstion| %>
+    14:       <% if converstion.seder_id ==current_user.id || converstion.recipient_id == current_user.id %>
+    15:         <% if converstion.sender_id == current_user.id %>
+    16:           <% recipient = User.find(converstion.recipient_id) %>
+    17:         <%else%>
+  
+app/views/converstions/index.html.erb:14
+app/views/converstions/index.html.erb:13
+Started GET "/" for ::1 at 2020-07-20 21:37:08 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  Rendered converstions/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 3621)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.2ms | Allocations: 5532)
+
+
+  
+ActionView::Template::Error (undefined method `seder_id' for #<Converstion:0x00007f9368378ba8>
+Did you mean?  sender_id
+               sender_id=
+               sender_id?):
+    11: 
+    12:   <tbody>
+    13:     <% @converstions.each do |converstion| %>
+    14:       <% if converstion.seder_id ==current_user.id || converstion.recipient_id == current_user.id %>
+    15:         <% if converstion.sender_id == current_user.id %>
+    16:           <% recipient = User.find(converstion.recipient_id) %>
+    17:         <%else%>
+  
+app/views/converstions/index.html.erb:14
+app/views/converstions/index.html.erb:13
+Started GET "/" for ::1 at 2020-07-20 21:40:06 +0530
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 6068)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 23.9ms | ActiveRecord: 1.3ms | Allocations: 25110)
+
+
+Started POST "/converstions?recipient_id=1&sender_id=2" for ::1 at 2020-07-20 21:40:36 +0530
+Processing by ConverstionsController#create as HTML
+  Parameters: {"authenticity_token"=>"PMgNVmS4shaLwv0qO5VdUU3H1A4wekD4qyEa1W8ingh1AoW+Lb9jnb0NDVCREBD1TL4QRHR0ky9648FwgQPwuw==", "recipient_id"=>"1", "sender_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '2' AND converstions.recipient_id = '1' )
+			OR (converstions.sender_id = '1' AND converstions.recipient_id = '2' ) )[0m
+  ↳ app/controllers/converstions_controller.rb:13:in `create'
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '2' AND converstions.recipient_id = '1' )
+			OR (converstions.sender_id = '1' AND converstions.recipient_id = '2' ) ) ORDER BY "converstions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:14:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms | Allocations: 3197)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 21:40:36 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.7ms | Allocations: 7318)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'converstion_id' for Message.):
+  
+app/controllers/messages_controller.rb:9:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 21:42:22 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.8ms | Allocations: 12516)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'converstion_id' for Message.):
+  
+app/controllers/messages_controller.rb:9:in `index'
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 21:42:40 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms | Allocations: 1459)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'converstion_id' for Message.):
+  
+app/controllers/messages_controller.rb:9:in `index'
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 21:44:52 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.9ms | Allocations: 12589)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'converstion_id' for Message.):
+  
+app/controllers/messages_controller.rb:9:in `index'
+Started GET "/" for ::1 at 2020-07-20 21:47:44 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 5256)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 20.1ms | ActiveRecord: 1.5ms | Allocations: 20944)
+
+
+Started DELETE "/converstions/1" for ::1 at 2020-07-20 21:47:54 +0530
+Processing by ConverstionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"TeIo11po11pq48iyjLaiVNOUREtZhPopNyy3l1dgDmAEKKA/E28G0VwsOMgmM+/w0u2AAR2KKf7m7mwyuUFg0w==", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms | Allocations: 2564)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/converstions_controller.rb:24:in `destroy'
+Started GET "/" for ::1 at 2020-07-20 21:50:26 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2257)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.4ms | Allocations: 8643)
+
+
+Started POST "/converstions?recipient_id=2&sender_id=1" for ::1 at 2020-07-20 21:50:34 +0530
+Processing by ConverstionsController#create as HTML
+  Parameters: {"authenticity_token"=>"F/rWtoMDVTFcdV0pS4PlcREnM3/aBlyO043gkJ9NJubiX5WkyvGjUzwI1NyugRKj2Qut7BCfUfrW9l0UG+AZkw==", "recipient_id"=>"2", "sender_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '1' AND converstions.recipient_id = '2' )
+			OR (converstions.sender_id = '2' AND converstions.recipient_id = '1' ) )[0m
+  ↳ app/controllers/converstions_controller.rb:13:in `create'
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '1' AND converstions.recipient_id = '2' )
+			OR (converstions.sender_id = '2' AND converstions.recipient_id = '1' ) ) ORDER BY "converstions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:14:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms | Allocations: 3164)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 21:50:34 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.6ms | Allocations: 5742)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'converstion_id' for Message.):
+  
+app/controllers/messages_controller.rb:9:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "converstions"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "converstions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sender_id" integer, "recipient_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "converstion_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_converstion_id" ON "messages" ("converstion_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200720122930)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200720122726),
+(20200720122913);
+
+[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-20 16:23:32.060813"], ["updated_at", "2020-07-20 16:23:32.060813"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "dc404c93aa8d85e77af2838a4196ae503f86cba8"], ["created_at", "2020-07-20 16:23:32.067631"], ["updated_at", "2020-07-20 16:23:32.067631"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "converstions"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "converstions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sender_id" integer, "recipient_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "converstion_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_converstion_id" ON "messages" ("converstion_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200720122930)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200720122726),
+(20200720122913);
+
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-20 16:23:32.095802"], ["updated_at", "2020-07-20 16:23:32.095802"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-07-20 16:23:32.100276"], ["key", "environment"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "dc404c93aa8d85e77af2838a4196ae503f86cba8"], ["created_at", "2020-07-20 16:23:32.112203"], ["updated_at", "2020-07-20 16:23:32.112203"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "converstions"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "converstions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sender_id" integer, "recipient_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "converstion_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_converstion_id" ON "messages" ("converstion_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200720122930)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200720122726),
+(20200720122913);
+
+[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-20 16:24:01.651949"], ["updated_at", "2020-07-20 16:24:01.651949"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "dc404c93aa8d85e77af2838a4196ae503f86cba8"], ["created_at", "2020-07-20 16:24:01.659325"], ["updated_at", "2020-07-20 16:24:01.659325"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "converstions"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "converstions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "sender_id" integer, "recipient_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "converstion_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_converstion_id" ON "messages" ("converstion_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200720122930)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200720122726),
+(20200720122913);
+
+[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-20 16:24:01.682484"], ["updated_at", "2020-07-20 16:24:01.682484"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-07-20 16:24:01.686582"], ["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "dc404c93aa8d85e77af2838a4196ae503f86cba8"], ["created_at", "2020-07-20 16:24:01.690528"], ["updated_at", "2020-07-20 16:24:01.690528"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-07-20 21:54:58 +0530
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 401 Unauthorized in 12ms (ActiveRecord: 0.7ms | Allocations: 3684)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-20 21:54:58 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 602)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 2863)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 21.7ms | ActiveRecord: 0.0ms | Allocations: 15806)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-07-20 21:55:04 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 199)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1794)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.0ms | Allocations: 6624)
+
+
+Started POST "/users" for ::1 at 2020-07-20 21:55:34 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"VjsChJk6wILX9KfR2+S4ybseJ7CpBj7GA2UuwSPYCgAIiegP9xHNO29mCRvpLVzYjW2CUrb6GJ6adXCynAq9QQ==", "user"=>{"email"=>"user@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "user@email.com"], ["encrypted_password", "$2a$12$X5yXsUHD85vE17lDbDiuSeQtizU04erxQ39i4e22iTKQEWVzM1jk2"], ["created_at", "2020-07-20 16:25:34.426211"], ["updated_at", "2020-07-20 16:25:34.426211"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 210ms (ActiveRecord: 1.6ms | Allocations: 9319)
+
+
+Started GET "/" for ::1 at 2020-07-20 21:55:34 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (7.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1855)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 9.1ms | ActiveRecord: 7.7ms | Allocations: 9599)
+
+
+Started GET "/" for ::1 at 2020-07-20 21:55:56 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.1ms | Allocations: 1655)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-20 21:55:56 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1040)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.0ms | Allocations: 5234)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-07-20 21:55:59 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 15)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 80)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1045)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.0ms | Allocations: 5169)
+
+
+Started POST "/users" for ::1 at 2020-07-20 21:56:13 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"YdSVhjIv4YG4PIVcVdhd0NRf1TPiq7k7IfH02lGBkF6xFLYF9jicEMAru44j9Jzito3J4OkVpXcgGpEk2DtVkw==", "user"=>{"email"=>"some@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "some@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "some@email.com"], ["encrypted_password", "$2a$12$GaFLNiqCQ0H9QUpWMUYWc.gR4d34kHzukBdzRC.bTAm6ciNHdwRpG"], ["created_at", "2020-07-20 16:26:13.466520"], ["updated_at", "2020-07-20 16:26:13.466520"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 204ms (ActiveRecord: 1.2ms | Allocations: 7029)
+
+
+Started GET "/" for ::1 at 2020-07-20 21:56:13 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.0ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1329)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.2ms | Allocations: 6710)
+
+
+Started POST "/converstions?recipient_id=1&sender_id=2" for ::1 at 2020-07-20 21:56:23 +0530
+Processing by ConverstionsController#create as HTML
+  Parameters: {"authenticity_token"=>"yGQfdlhLAPQkO8aE5kncomOOtYpKgzSUM+hupJzGOdo9wVxkEbn2lkRGT3EDSytwq6IrGYAaOeA2k9MgGGsGrw==", "recipient_id"=>"1", "sender_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '2' AND converstions.recipient_id = '1' )
+			OR (converstions.sender_id = '1' AND converstions.recipient_id = '2' ) )[0m
+  ↳ app/controllers/converstions_controller.rb:13:in `create'
+[31mUnpermitted parameters: :_method, :authenticity_token[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mConverstion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "converstions" WHERE "converstions"."sender_id" = ? AND "converstions"."recipient_id" = ? LIMIT ?[0m  [["sender_id", 2], ["recipient_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mConverstion Create (0.3ms)[0m  [1m[32mINSERT INTO "converstions" ("sender_id", "recipient_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sender_id", 2], ["recipient_id", 1], ["created_at", "2020-07-20 16:26:23.949689"], ["updated_at", "2020-07-20 16:26:23.949689"]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 24ms (ActiveRecord: 2.0ms | Allocations: 14868)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 21:56:23 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 4499)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 13.8ms | ActiveRecord: 0.9ms | Allocations: 16241)
+
+
+Started POST "/converstions/1/messages" for ::1 at 2020-07-20 21:56:42 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"SKZJp40L7WNkgi+DuMLntvlszQPB81nSDwMVUcqx+ya9Awq1xPkbAQT/pnZdwBBkMUBTkAtqVKYKeKjVThzEUw==", "message"=>{"body"=>"hello", "user_id"=>"2"}, "commit"=>"Send", "converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms | Allocations: 3412)
+
+
+  
+NoMethodError (undefined method `new' for #<Message:0x00007fc84ca2c990>):
+  
+app/controllers/messages_controller.rb:16:in `create'
+Started GET "/" for ::1 at 2020-07-20 21:57:27 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2051)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 0.4ms | Allocations: 7497)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:02:35 +0530
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 12.5ms | Allocations: 8169)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 53ms (Views: 28.2ms | ActiveRecord: 1.6ms | Allocations: 30408)
+
+
+Started POST "/converstions/1/messages" for ::1 at 2020-07-20 22:02:45 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"Znf1wJcrWm2jCHfJSBl1/jUcOBV9ZJhg+S/EkJiiXzqT0rbS3tmsD8N1/jytG4Is/TCmhrf9lRT8VHkUHA9gTw==", "message"=>{"body"=>"hi\r\n", "user_id"=>"2"}, "commit"=>"Send", "converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms | Allocations: 1957)
+
+
+  
+NoMethodError (undefined method `new' for nil:NilClass):
+  
+app/controllers/messages_controller.rb:16:in `create'
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:10:04 +0530
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 12.5ms | Allocations: 7918)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 57ms (Views: 28.9ms | ActiveRecord: 1.7ms | Allocations: 30405)
+
+
+Started POST "/converstions/1/messages" for ::1 at 2020-07-20 22:10:12 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"Ms1xpZPmPjBr4O3Qc7CDeHdJ7pGICM93ybov9ANom2/HaDK32hTIUgudZCWWsnSqv2VwAkKRwgPMwZJwh8WkGg==", "message"=>{"body"=>"hi", "user_id"=>"2"}, "commit"=>"Send", "converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("body", "converstion_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "hi"], ["converstion_id", 1], ["user_id", 2], ["created_at", "2020-07-20 16:40:12.105103"], ["updated_at", "2020-07-20 16:40:12.105103"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 8ms (ActiveRecord: 1.6ms | Allocations: 5594)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:10:12 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2563)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.3ms | Allocations: 7208)
+
+
+Started GET "/" for ::1 at 2020-07-20 22:10:27 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 2312)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 19.0ms | ActiveRecord: 0.5ms | Allocations: 9135)
+
+
+Started GET "/" for ::1 at 2020-07-20 22:10:31 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1928)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.4ms | Allocations: 7293)
+
+
+Started POST "/converstions?recipient_id=2&sender_id=1" for ::1 at 2020-07-20 22:10:32 +0530
+Processing by ConverstionsController#create as HTML
+  Parameters: {"authenticity_token"=>"tfV1/EAwk3XbNodHtofzWrnUxown7gRfigrUHNr2qd38P/0UCTdC/u35dz0cAr7+uK0CxmPg14hbyA+5NNfHbg==", "recipient_id"=>"2", "sender_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '1' AND converstions.recipient_id = '2' )
+			OR (converstions.sender_id = '2' AND converstions.recipient_id = '1' ) )[0m
+  ↳ app/controllers/converstions_controller.rb:13:in `create'
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '1' AND converstions.recipient_id = '2' )
+			OR (converstions.sender_id = '2' AND converstions.recipient_id = '1' ) ) ORDER BY "converstions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:14:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms | Allocations: 3185)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:10:32 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2445)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.3ms | Allocations: 7117)
+
+
+Started POST "/converstions/1/messages" for ::1 at 2020-07-20 22:10:42 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"hr/o5+1fMX3d52OkaCr0cSwjZR57o1SbXJpGJKgeb3LPdWAPpFjg9usok97Cr7nVLVqhVD+th0yNWJ2BRj8BwQ==", "message"=>{"body"=>"hello", "user_id"=>"1"}, "commit"=>"Send", "converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("body", "converstion_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "hello"], ["converstion_id", 1], ["user_id", 1], ["created_at", "2020-07-20 16:40:42.852449"], ["updated_at", "2020-07-20 16:40:42.852449"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 8ms (ActiveRecord: 1.6ms | Allocations: 4593)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:10:42 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 3047)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.4ms | Allocations: 7705)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:10:57 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 3047)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 0.4ms | Allocations: 7707)
+
+
+Started POST "/converstions/1/messages" for ::1 at 2020-07-20 22:11:27 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"7upDFK+N4P//ha0Q1a/2ZLfKnqh9KGVc9t1FFYLhcE8bTwAG5n8WnZ/4JOUwrQG2f+YAO7exaCjzpviRBkxPOg==", "message"=>{"body"=>"ka ho rao h", "user_id"=>"2"}, "commit"=>"Send", "converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("body", "converstion_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "ka ho rao h"], ["converstion_id", 1], ["user_id", 2], ["created_at", "2020-07-20 16:41:27.996230"], ["updated_at", "2020-07-20 16:41:27.996230"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 7ms (ActiveRecord: 1.2ms | Allocations: 4573)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:11:28 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 3605)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.4ms | Allocations: 8261)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:11:32 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 3604)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.4ms | Allocations: 8264)
+
+
+Started POST "/converstions/1/messages" for ::1 at 2020-07-20 22:12:10 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"IYkaS1/VXDYZsfiZkA6TENzoUTziDze8QlX7qu8QJ8xoQ5KjFtKNvS9+COM6i9603ZGVdqYB5GuTlyAPATFJfw==", "message"=>{"body"=>"kachhu ni", "user_id"=>"1"}, "commit"=>"Send", "converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("body", "converstion_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "kachhu ni"], ["converstion_id", 1], ["user_id", 1], ["created_at", "2020-07-20 16:42:10.545095"], ["updated_at", "2020-07-20 16:42:10.545095"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 8ms (ActiveRecord: 1.6ms | Allocations: 4573)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:12:10 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 10.1ms | Allocations: 4162)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.5ms | Allocations: 8847)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:12:15 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 4162)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.4ms | Allocations: 8825)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:17:45 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 16.1ms | Allocations: 11221)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 30.2ms | ActiveRecord: 1.7ms | Allocations: 32928)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:17:50 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 4182)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.5ms | Allocations: 8866)
+
+
+Started POST "/converstions/1/messages" for ::1 at 2020-07-20 22:18:22 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"KKBCujtBo188yzyZQeZgLviXt9yoqapo19JrYTFL4GdhaspSckZy1AoEzOPrYy2K+e5zluyneb8GELDE32qO1A==", "message"=>{"body"=>"how is app?", "user_id"=>"1"}, "commit"=>"Send", "converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("body", "converstion_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "how is app?"], ["converstion_id", 1], ["user_id", 1], ["created_at", "2020-07-20 16:48:22.041160"], ["updated_at", "2020-07-20 16:48:22.041160"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 9ms (ActiveRecord: 1.6ms | Allocations: 5554)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:18:22 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 15.8ms | Allocations: 4730)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.5ms | Allocations: 9411)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:18:27 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 4729)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 0.5ms | Allocations: 9394)
+
+
+Started POST "/converstions/1/messages" for ::1 at 2020-07-20 22:19:45 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"ctZRpwFMMKQZbJbbS6046tWbScjykWfPE2r7ZhkLY0uHcxK1SL7GxnkRHy6ur884HbfXWzgIarsWEUbinaZcPg==", "message"=>{"body"=>"it's working", "user_id"=>"2"}, "commit"=>"Send", "converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.2ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("body", "converstion_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "it's working"], ["converstion_id", 1], ["user_id", 2], ["created_at", "2020-07-20 16:49:45.847149"], ["updated_at", "2020-07-20 16:49:45.847149"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/1/messages
+Completed 302 Found in 8ms (ActiveRecord: 1.3ms | Allocations: 4606)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:19:45 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 7.9ms | Allocations: 5635)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 14.6ms | ActiveRecord: 0.5ms | Allocations: 11321)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:20:04 +0530
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 16.3ms | Allocations: 12913)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 51ms (Views: 28.9ms | ActiveRecord: 1.5ms | Allocations: 34065)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:20:10 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 5300)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 10.7ms | ActiveRecord: 0.5ms | Allocations: 9974)
+
+
+Started GET "/" for ::1 at 2020-07-20 22:30:48 +0530
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ConverstionsController#index as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms | Allocations: 1002)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-20 22:30:48 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 601)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.7ms | Allocations: 2612)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms | Allocations: 8066)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-07-20 22:31:15 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"EY2ql89+f/iy4hFNA93s/JNuU9nUzUnk6+py8TGfL8eCfzczmPZJ8eAO2ZAdI51RhtJHLd6awL/e7v121aRkcQ==", "user"=>{"email"=>"user@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "user@email.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 208ms (ActiveRecord: 0.2ms | Allocations: 4803)
+
+
+Started GET "/" for ::1 at 2020-07-20 22:31:15 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2329)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.4ms | Allocations: 8368)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:31:52 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 5316)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 17.5ms | ActiveRecord: 1.0ms | Allocations: 9985)
+
+
+Started GET "/" for ::1 at 2020-07-20 22:32:17 +0530
+Processing by ConverstionsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 180)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-20 22:32:17 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1045)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 7.8ms | ActiveRecord: 0.0ms | Allocations: 5233)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-07-20 22:32:21 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 199)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1794)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 6594)
+
+
+Started POST "/users" for ::1 at 2020-07-20 22:32:37 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"xcfmTzFyF25VFZH5YrfHUtqcuj6NjXsUrgrujkj9a6g02P8tvs4flAgyvflBYBZY+Y8zqVzvzGjuMhBecp/gag==", "user"=>{"email"=>"any@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "any@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "any@email.com"], ["encrypted_password", "$2a$12$Y8JVcDD8q3UtKYTyKQ9Dtepd6gpgrsx6Hj2rEoUzRDVaIFB4BiB8S"], ["created_at", "2020-07-20 17:02:37.804301"], ["updated_at", "2020-07-20 17:02:37.804301"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 203ms (ActiveRecord: 1.1ms | Allocations: 7681)
+
+
+Started GET "/" for ::1 at 2020-07-20 22:32:37 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1429)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.2ms | Allocations: 6796)
+
+
+Started POST "/converstions?recipient_id=2&sender_id=3" for ::1 at 2020-07-20 22:32:51 +0530
+Processing by ConverstionsController#create as HTML
+  Parameters: {"authenticity_token"=>"l0mCkerPwcV3uOmw4unEqgZ5Xg1wRd955E6GonzB8ytapPsqyQCsj99ow+lzEt/SMFjRYw+8+QnCV2caag4NsA==", "recipient_id"=>"2", "sender_id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '3' AND converstions.recipient_id = '2' )
+			OR (converstions.sender_id = '2' AND converstions.recipient_id = '3' ) )[0m
+  ↳ app/controllers/converstions_controller.rb:13:in `create'
+[31mUnpermitted parameters: :_method, :authenticity_token[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mConverstion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "converstions" WHERE "converstions"."sender_id" = ? AND "converstions"."recipient_id" = ? LIMIT ?[0m  [["sender_id", 3], ["recipient_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mConverstion Create (0.3ms)[0m  [1m[32mINSERT INTO "converstions" ("sender_id", "recipient_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sender_id", 3], ["recipient_id", 2], ["created_at", "2020-07-20 17:02:51.649220"], ["updated_at", "2020-07-20 17:02:51.649220"]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/2/messages
+Completed 302 Found in 16ms (ActiveRecord: 1.5ms | Allocations: 9128)
+
+
+Started GET "/converstions/2/messages" for ::1 at 2020-07-20 22:32:51 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"2"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 2]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1832)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.3ms | Allocations: 6499)
+
+
+Started POST "/converstions/2/messages" for ::1 at 2020-07-20 22:32:58 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"PR6yYl48AXlI0Qk2w0pXYE41ftsS9D8eqz4sco0+vyzw88vZffNsM+ABI29SsUwYeBTxtW0NGW6NJ83Km/FBtw==", "message"=>{"body"=>"hi", "user_id"=>"3"}, "commit"=>"Send", "converstion_id"=>"2"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("body", "converstion_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "hi"], ["converstion_id", 2], ["user_id", 3], ["created_at", "2020-07-20 17:02:58.201666"], ["updated_at", "2020-07-20 17:02:58.201666"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/2/messages
+Completed 302 Found in 7ms (ActiveRecord: 1.4ms | Allocations: 5390)
+
+
+Started GET "/converstions/2/messages" for ::1 at 2020-07-20 22:32:58 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"2"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 2]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2435)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.3ms | Allocations: 7100)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-20 22:33:12 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 5288)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 0.5ms | Allocations: 9945)
+
+
+Started GET "/" for ::1 at 2020-07-20 22:33:28 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2628)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.4ms | Allocations: 7988)
+
+
+Started GET "/converstions/2/messages" for ::1 at 2020-07-20 22:33:33 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"2"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 2]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2435)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 9.9ms | ActiveRecord: 0.4ms | Allocations: 7099)
+
+
+Started POST "/converstions/2/messages" for ::1 at 2020-07-20 22:33:38 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"bHes1Qd46XL0r/evvRCSQL8hhpn5MZgtjJrFMh/stV3nKxySPlCHByisYo7Qrjow+vx2mwoJMAm39SbLQKyHkw==", "message"=>{"body"=>"hello", "user_id"=>"2"}, "commit"=>"Send", "converstion_id"=>"2"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("body", "converstion_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "hello"], ["converstion_id", 2], ["user_id", 2], ["created_at", "2020-07-20 17:03:38.347966"], ["updated_at", "2020-07-20 17:03:38.347966"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/2/messages
+Completed 302 Found in 6ms (ActiveRecord: 1.2ms | Allocations: 4607)
+
+
+Started GET "/converstions/2/messages" for ::1 at 2020-07-20 22:33:38 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"2"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 2]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 3051)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 0.4ms | Allocations: 7717)
+
+
+Started GET "/converstions/" for ::1 at 2020-07-20 22:33:47 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2624)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 0.4ms | Allocations: 7957)
+
+
+Started GET "/" for ::1 at 2020-07-22 13:12:40 +0530
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ConverstionsController#index as HTML
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.0ms | Allocations: 1047)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-22 13:12:40 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 602)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.9ms | Allocations: 2868)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 27.4ms | ActiveRecord: 0.5ms | Allocations: 16503)
+
+
+Started GET "/" for ::1 at 2020-07-22 13:12:46 +0530
+Processing by ConverstionsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 180)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-22 13:12:46 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1043)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 5227)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-07-22 13:13:00 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"JUT5VZgCphPJW2wsNA5PRHmRZwQUl5Ewh3yD7WYDuQQAB21L2oBbMAas6Flgtf4Lgc31nllbLqXerQyviZCIFQ==", "user"=>{"email"=>"some@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "some@email.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 210ms (ActiveRecord: 0.7ms | Allocations: 5110)
+
+
+Started GET "/" for ::1 at 2020-07-22 13:13:01 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.7ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 18.3ms | Allocations: 5891)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 32ms (Views: 22.7ms | ActiveRecord: 1.7ms | Allocations: 13639)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-07-22 13:13:26 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"TyxoFV3+YsEjuwgha/GO9BeqWsbJLcqQvcvfkjIM3pmfn9n4KiqVBmgcZjpeGYeqPJ0XG+YOKY5ELoXaxRS0QA==", "user"=>{"email"=>"user@email.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "user@email.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 201ms (ActiveRecord: 0.1ms | Allocations: 2644)
+
+
+Started GET "/" for ::1 at 2020-07-22 13:13:26 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2032)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.2ms | Allocations: 7379)
+
+
+Started GET "/converstions/1/messages" for ::1 at 2020-07-22 13:13:40 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"1"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 1]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 6035)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 14.5ms | ActiveRecord: 1.6ms | Allocations: 17886)
+
+
+Started GET "/" for ::1 at 2020-07-22 13:14:24 +0530
+Processing by ConverstionsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 180)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-22 13:14:24 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1045)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 5244)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-07-22 13:14:38 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 199)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1793)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.0ms | Allocations: 6613)
+
+
+Started POST "/users" for ::1 at 2020-07-22 13:15:40 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"LZNCX3vHd7g4p4KgI2621PbzzyiPD1aouM6u5J6nDh2OPl6jxUcb1p7IB99ZjebWuHbUcQB8aPe4A9VZl53+Lg==", "user"=>{"email"=>"new@abc.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@abc.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "new@abc.com"], ["encrypted_password", "$2a$12$3GbRLiTo5nZwNY5C6zMFz.YaInOV5Bk/NQIc8fAbGoANkLf2b49ye"], ["created_at", "2020-07-22 07:45:40.406200"], ["updated_at", "2020-07-22 07:45:40.406200"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 206ms (ActiveRecord: 2.4ms | Allocations: 7683)
+
+
+Started GET "/" for ::1 at 2020-07-22 13:15:40 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1534)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.3ms | Allocations: 6904)
+
+
+Started POST "/converstions?recipient_id=1&sender_id=4" for ::1 at 2020-07-22 13:15:51 +0530
+Processing by ConverstionsController#create as HTML
+  Parameters: {"authenticity_token"=>"Mudo6maG7jeCUfGLJIacd7lcof1kgDZoLKiS+mnQjTukhH0BzOREZPL+OtMUBP6FyqR3Qd3148PcybTdpDG7Fw==", "recipient_id"=>"1", "sender_id"=>"4"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE ((converstions.sender_id = '4' AND converstions.recipient_id = '1' )
+			OR (converstions.sender_id = '1' AND converstions.recipient_id = '4' ) )[0m
+  ↳ app/controllers/converstions_controller.rb:13:in `create'
+[31mUnpermitted parameters: :_method, :authenticity_token[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mConverstion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "converstions" WHERE "converstions"."sender_id" = ? AND "converstions"."recipient_id" = ? LIMIT ?[0m  [["sender_id", 4], ["recipient_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[36mConverstion Create (0.3ms)[0m  [1m[32mINSERT INTO "converstions" ("sender_id", "recipient_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["sender_id", 4], ["recipient_id", 1], ["created_at", "2020-07-22 07:45:51.823468"], ["updated_at", "2020-07-22 07:45:51.823468"]]
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/converstions_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/3/messages
+Completed 302 Found in 14ms (ActiveRecord: 1.7ms | Allocations: 9127)
+
+
+Started GET "/converstions/3/messages" for ::1 at 2020-07-22 13:15:51 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"3"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 3]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1832)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.2ms | Allocations: 6504)
+
+
+Started POST "/converstions/3/messages" for ::1 at 2020-07-22 13:16:01 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"iykj5Tw69npIzbBDbDMGwjLWZiG48om+v+MUfEve4a8dSjYOllhcKThiextcsWQwQS6wnQGHXBVPgjJbhj/Xgw==", "message"=>{"body"=>"hai\r\n", "user_id"=>"4"}, "commit"=>"Send", "converstion_id"=>"3"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("body", "converstion_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "hai\r\n"], ["converstion_id", 3], ["user_id", 4], ["created_at", "2020-07-22 07:46:01.186613"], ["updated_at", "2020-07-22 07:46:01.186613"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/3/messages
+Completed 302 Found in 7ms (ActiveRecord: 1.5ms | Allocations: 5405)
+
+
+Started GET "/converstions/3/messages" for ::1 at 2020-07-22 13:16:01 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"3"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 3]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2435)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.3ms | Allocations: 7091)
+
+
+Started GET "/" for ::1 at 2020-07-22 13:16:12 +0530
+Processing by ConverstionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering converstions/index.html.erb within layouts/application
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions"[0m
+  ↳ app/views/converstions/index.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/converstions/index.html.erb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/converstions/index.html.erb:32
+  Rendered converstions/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2734)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.4ms | Allocations: 8074)
+
+
+Started GET "/converstions/3/messages" for ::1 at 2020-07-22 13:16:17 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"3"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 3]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2435)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 0.5ms | Allocations: 7089)
+
+
+Started POST "/converstions/3/messages" for ::1 at 2020-07-22 13:16:22 +0530
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"HQ2+mk1yRB5k0auGfIQaXUfo2afw+dOHVVR48jpT3w2JRrW0E1OuDpaeVltATUlPVsgeq9MIHvPVJXuPxKKW+A==", "message"=>{"body"=>"reply", "user_id"=>"1"}, "commit"=>"Send", "converstion_id"=>"3"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("body", "converstion_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "reply"], ["converstion_id", 3], ["user_id", 1], ["created_at", "2020-07-22 07:46:22.650453"], ["updated_at", "2020-07-22 07:46:22.650453"]]
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/messages_controller.rb:16:in `create'
+Redirected to http://localhost:3000/converstions/3/messages
+Completed 302 Found in 7ms (ActiveRecord: 1.3ms | Allocations: 4605)
+
+
+Started GET "/converstions/3/messages" for ::1 at 2020-07-22 13:16:22 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"3"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 3]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 3051)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.4ms | Allocations: 7699)
+
+
+Started GET "/converstions/3/messages" for ::1 at 2020-07-22 13:16:31 +0530
+Processing by MessagesController#index as HTML
+  Parameters: {"converstion_id"=>"3"}
+  [1m[36mConverstion Load (0.1ms)[0m  [1m[34mSELECT "converstions".* FROM "converstions" WHERE "converstions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:4:in `block in <class:MessagesController>'
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."converstion_id" = ?[0m  [["converstion_id", 3]]
+  ↳ app/views/messages/index.html.erb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:28
+  Rendered messages/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 3054)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.3ms | Allocations: 7726)
+
+
+Started GET "/users/" for ::1 at 2020-07-22 13:47:14 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'

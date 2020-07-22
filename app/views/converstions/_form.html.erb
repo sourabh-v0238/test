@@ -1,0 +1,17 @@
+<%= form_with(model: converstion, local: true) do |form| %>
+  <% if converstion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(converstion.errors.count, "error") %> prohibited this converstion from being saved:</h2>
+
+      <ul>
+        <% converstion.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
